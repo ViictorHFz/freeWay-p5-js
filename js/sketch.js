@@ -10,4 +10,6 @@ function draw() {
     movimentaJogador();
     fazLoopCarros();
     verificaColisao();
+    incluiPontos();
+    marcaPonto();
 }

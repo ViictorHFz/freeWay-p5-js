@@ -1,6 +1,7 @@
 //Posição y do Jogador;
 let xJogador = 100;
-let yJogador = 366;
+let yJogador = 370;
+let meusPontos = 0;
 
 let colisao = false;
 
@@ -18,7 +19,9 @@ function movimentaJogador() {
     }
 
     if (keyIsDown(DOWN_ARROW)) {
-        yJogador += 3;
+        if (personagemNoLimiteTela()) {
+            yJogador += 3;
+        }
     }
 }
 
@@ -26,7 +29,36 @@ function verificaColisao() {
     for (let i = 0; i < imgCarros.length; i++) {
         colisao = collideRectCircle(xCarros[i], yCarros[i], comprimentoCarro, alturaCarro, xJogador, yJogador, 15);
         if (colisao) {
-            yJogador = 366;
+            voltaPersonagemInicio();
+            if (pontosMaiorQueZero()) {
+                meusPontos--;
+            }
         }
     }
+}
+
+function voltaPersonagemInicio() {
+    yJogador = 380;
+}
+
+function incluiPontos() {
+    textAlign(CENTER);
+    textSize(25);
+    fill(255, 240, 60)
+    text(meusPontos, width / 3, 27);
+}
+
+function marcaPonto() {
+    if (yJogador < 15) {
+        meusPontos++;
+        voltaPersonagemInicio();
+    }
+}
+
+function pontosMaiorQueZero() {
+    return meusPontos > 0;
+}
+
+function personagemNoLimiteTela() {
+    return yJogador < 366;
 }
