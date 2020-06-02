@@ -30,6 +30,7 @@ function verificaColisao() {
         colisao = collideRectCircle(xCarros[i], yCarros[i], comprimentoCarro, alturaCarro, xJogador, yJogador, 15);
         if (colisao) {
             voltaPersonagemInicio();
+            somColisao.play();
             if (pontosMaiorQueZero()) {
                 meusPontos--;
             }
@@ -51,6 +52,7 @@ function incluiPontos() {
 function marcaPonto() {
     if (yJogador < 15) {
         meusPontos++;
+        somPonto.play();
         voltaPersonagemInicio();
     }
 }
