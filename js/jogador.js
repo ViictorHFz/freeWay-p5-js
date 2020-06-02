@@ -46,7 +46,7 @@ function incluiPontos() {
     textAlign(CENTER);
     textSize(25);
     fill(255, 240, 60)
-    text(meusPontos, width / 3, 27);
+    text(meusPontos, width / 3, 20);
 }
 
 function marcaPonto() {
